@@ -218,7 +218,7 @@ contract MasterChef is Ownable, ERC20 {
     function poolLength() external view returns (uint256) {
         return poolInfo.length;
     }
-    function getMultiplier(uint256 _from, uint256 _to) internal view returns (uint256) {
+    function getMultiplier(uint256 _from, uint256 _to) public view returns (uint256) {
         return _to.sub(_from);
     }
 
