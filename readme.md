@@ -41,7 +41,7 @@ Each reference below includes the file paths and the associated commit hash [b9d
  **Files Affected** 
 `src/Lender.sol`
 
-**Description**: The `Lender.rate` function L34 simply divides the WETH reserve by the ERC20 reserve from the Uniswap pair instead of using TWAP or Trusted Oracle. The exploit Contract uses the flash loan to temporarily skew the pair reserves via a large swap, which collapses the apparent rate, lets the attacker borrow the full `safeDebt` amount, and liquidate enough collateral to drain WETH before the price normalizes.
+**Description**: The `Lender.rate` function simply divides the WETH reserve by the ERC20 reserve from the Uniswap pair instead of using TWAP or Trusted Oracle. The exploit Contract uses the flash loan to temporarily skew the pair reserves via a large swap, which collapses the apparent rate, lets the attacker borrow the full `safeDebt` amount, and liquidate enough collateral to drain WETH before the price normalizes.
 
 **Proof**:
 - Setup Contract deposits 25 WETH and 500000 tokens into the pair before the challenge begins, so the lender’s initial rate is 500000/25 = 20000 tokens per WETH and a 1 WETH deposit permits borrowing `safeDebt = 1 * rate * 2 / 3 ≈ 13333` tokens.
