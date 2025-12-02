@@ -51,7 +51,6 @@ contract FlashLoan {
         require(amount <= balanceBefore, "Not enough token balance");
 
         weth.transfer(msg.sender, amount);
-
         (bool success,) = msg.sender.call(
             abi.encodeWithSignature(
                 "receiveFlashLoan(uint256)",
